@@ -1,0 +1,29 @@
+﻿@model PhoneApp.Models.Phonebook
+
+@{
+    ViewBag.Title = "PhonebookForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>New Phonebook Entry</h2>
+
+@using (Html.BeginForm("Save", "Phonebook"))
+{
+    @Html.ValidationSummary(true, "Please fix the below errors")
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name)
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+
+
+    @Html.HiddenFor(p => p.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+}

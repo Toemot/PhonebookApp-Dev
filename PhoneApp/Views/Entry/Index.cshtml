@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PhoneApp.Models.Entry>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Entries List</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Entries</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(entry.Name, "details", "entry", new { id = entry.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
